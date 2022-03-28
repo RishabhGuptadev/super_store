@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Auth0Provider } from "@auth0/auth0-react";
+import 'bootstrap/dist/css/bootstrap.css';
+import {Provider} from "react-redux";
+import store from "./redux/store";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+  <Provider store = {store}> 
+  <Auth0Provider
+  domain="dev--jlcbrwp.us.auth0.com"
+  clientId="7jMZGR1yrnkWl2vZZ4MV6S9UA0RHbhih"
+  redirectUri={`${window.location.origin}/products`}
+>
+  <App />
+</Auth0Provider>
+</Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
